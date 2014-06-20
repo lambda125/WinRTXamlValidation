@@ -1,0 +1,37 @@
+﻿<Page x:Class="WinRTXAMLValidation.Demo.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:ignore="http://www.ignore.com"
+      xmlns:vc="using:WinRTXAMLValidation.Library.Controls"
+      mc:Ignorable="d ignore"
+      d:DesignHeight="768"
+      d:DesignWidth="1366">
+    
+    <Grid Background="Black">
+        <StackPanel Margin="120,60,0,0" Orientation="Vertical" VerticalAlignment="Top" HorizontalAlignment="Left">   
+            <TextBlock Text="Auction bid" Style="{StaticResource PageHeaderTextStyle}" Margin="0,0,0,30" />
+        
+            <TextBlock Text="Current bid" Style="{StaticResource LabelTextStyle}" />
+            <TextBlock Text="{Binding Bid.CurrentBid}" Style="{StaticResource ValueTextStyle}" />
+
+            <TextBlock Text="Your bid" Style="{StaticResource LabelTextStyle}" />
+            <vc:ValidationPanel ValidationSource="{Binding Bid.ValidationMessages[NewBid]}">
+                <TextBox Text="{Binding Bid.NewBid, Mode=TwoWay}" Width="150" Style="{StaticResource ValueInputStyle}" />
+            </vc:ValidationPanel>
+
+            <TextBlock Text="Your highest bid" Style="{StaticResource LabelTextStyle}" />
+            <vc:ValidationPanel ValidationSource="{Binding Bid.ValidationMessages[MaxNewBid]}">
+                <TextBox Text="{Binding Bid.MaxNewBid, Mode=TwoWay, Converter={StaticResource NumberConverter}}" Width="150" Style="{StaticResource ValueInputStyle}" />
+            </vc:ValidationPanel>
+
+            <vc:ValidationSummary ValidationSource="{Binding Bid.ValidationMessages.AllMessages}" Header="General input errors" Margin="0,20,0,0" ShowPropertyValidationMessages="False" />
+            
+            <StackPanel Orientation="Horizontal" Margin="0,20,0,0">
+                <Button Content="Send bid" Command="{Binding SendBidCommand}" IsEnabled="{Binding IsSendingBid, Converter={StaticResource NegatedBooleanConverter}}" />
+                <ProgressRing Visibility="{Binding IsSendingBid, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True" Foreground="White" Height="25" Width="25" Margin="10,0,0,0" />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

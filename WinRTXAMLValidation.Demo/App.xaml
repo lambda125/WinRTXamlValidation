@@ -1,0 +1,26 @@
+﻿<Application x:Class="WinRTXAMLValidation.Demo.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+			 xmlns:ignore="http://www.ignore.com"
+             mc:Ignorable="d ignore"
+             xmlns:conv="using:WinRTXAMLValidation.Demo.Common.Converters"
+             RequestedTheme="Dark">
+
+    <Application.Resources>
+        <ResourceDictionary>
+
+            <conv:NumberConverter x:Key="NumberConverter" />
+            <conv:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+            <conv:NegatedBooleanConverter x:Key="NegatedBooleanConverter" />
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Common/StandardStyles.xaml" />
+                <ResourceDictionary Source="Common/CustomStyles.xaml" />
+                <ResourceDictionary Source="Common/ValidationStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

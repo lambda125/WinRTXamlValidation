@@ -1,4 +1,1 @@
-WinRTXamlValidation
-===================
-
-WinRT XAML Validation
+WinRTXamlValidation===================”WinRT XAML Validation” is a library to enable comprehensive validation of user input in C#/XAML WinRT apps. The implemented validation approach is based on Data Annotations and the ValidationAttribute class and extends those principles for implicit and explicit synchronous and asynchronous validation of properties and entities as a whole.WinRT XAML Validation is forked from https://winrtxamlvalidation.codeplex.com/and ported to portable class libraries (Profile 7). The XAML controls available in the original WinRT XAML Validation library as still present - only the validation attributes, **ValidationBindableBase** class and related classes are moved to a PCL.**Documentation**Please see: https://winrtxamlvalidation.codeplex.com/documentation

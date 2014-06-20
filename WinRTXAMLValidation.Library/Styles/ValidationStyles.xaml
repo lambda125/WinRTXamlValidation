@@ -1,0 +1,139 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vc="using:WinRTXAMLValidation.Library.Controls">
+
+    <Color x:Key="ColorValidationError">#FFFF0000</Color>
+    <Color x:Key="ColorValidationWarning">#FFFF9900</Color>
+
+    <Style x:Key="ValidationMessageStyle" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="{StaticResource ControlContentThemeFontSize}"/>
+        <Setter Property="FontFamily" Value="{StaticResource ContentControlThemeFontFamily}"/>
+        <Setter Property="TextTrimming" Value="WordEllipsis"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Typography.StylisticSet20" Value="True"/>
+        <Setter Property="Typography.DiscretionaryLigatures" Value="True"/>
+        <Setter Property="Typography.CaseSensitiveForms" Value="True"/>
+    </Style>
+    
+    <Style x:Key="ValidationErrorMessageStyle" TargetType="TextBlock" BasedOn="{StaticResource ValidationMessageStyle}">
+        <Setter Property="Foreground" Value="{StaticResource ColorValidationError}"/>
+    </Style>
+
+    <Style x:Key="ValidationWarningMessageStyle" TargetType="TextBlock" BasedOn="{StaticResource ValidationMessageStyle}">
+        <Setter Property="Foreground" Value="{StaticResource ColorValidationWarning}"/>
+    </Style>
+
+    <Style x:Key="ValidationSummaryHeaderStyle" TargetType="TextBlock" BasedOn="{StaticResource ValidationMessageStyle}">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Foreground" Value="{StaticResource ColorValidationError}"/>
+    </Style>
+
+    <Style TargetType="vc:ValidationPanel">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="vc:ValidationPanel">
+                    <Grid>
+                        <StackPanel Orientation="Vertical">
+                            <Border x:Name="ValidationBorder" HorizontalAlignment="Left" BorderThickness="0">
+                                <ContentPresenter />
+                            </Border>
+                            <vc:PropertyValidationTextBlock x:Name="ValidationSummary" Visibility="Collapsed" IsTabStop="False"
+                                                            ValidationSource="{TemplateBinding ValidationSource}"
+                                                            ShowValidationMessages="{TemplateBinding ShowValidationMessages}"
+                                                            ShowGroupValidationMessages="{TemplateBinding ShowGroupValidationMessages}"
+                                                            ShowPropertyValidationMessages="{TemplateBinding ShowPropertyValidationMessages}"/>
+                        </StackPanel>
+
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="Valid" />
+                                <VisualState x:Name="Error">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationBorder" Storyboard.TargetProperty="BorderBrush">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ColorValidationError}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationSummary" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationBorder" Storyboard.TargetProperty="BorderThickness">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="2"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                                <VisualState x:Name="Warning">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationBorder" Storyboard.TargetProperty="BorderBrush">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource ColorValidationWarning}"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationSummary" Storyboard.TargetProperty="Visibility">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="Visible"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="ValidationBorder" Storyboard.TargetProperty="BorderThickness">
+                                            <DiscreteObjectKeyFrame KeyTime="0" Value="2"/>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="vc:ValidationSummary">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="vc:ValidationSummary">
+                    <StackPanel>
+                        <TextBlock x:Name="HeaderTextBlock" Style="{StaticResource ValidationSummaryHeaderStyle}"
+                                   Text="{TemplateBinding Header}" Visibility="{TemplateBinding HeaderVisibility}" />
+                        <ItemsControl IsTabStop="False" ItemsSource="{TemplateBinding Errors}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MessageText}" Style="{StaticResource ValidationErrorMessageStyle}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <ItemsControl IsTabStop="False" ItemsSource="{TemplateBinding Warnings}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MessageText}" Style="{StaticResource ValidationWarningMessageStyle}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="vc:PropertyValidationTextBlock">
+        <Setter Property="IsTabStop" Value="False" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="vc:PropertyValidationTextBlock">
+                    <StackPanel>
+                        <ItemsControl IsTabStop="False" ItemsSource="{TemplateBinding Errors}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MessageText}" Style="{StaticResource ValidationErrorMessageStyle}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                        <ItemsControl IsTabStop="False" ItemsSource="{TemplateBinding Warnings}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding MessageText}" Style="{StaticResource ValidationWarningMessageStyle}" />
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
