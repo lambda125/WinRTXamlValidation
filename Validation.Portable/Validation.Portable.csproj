@@ -43,6 +43,9 @@
     <Compile Include="Attributes\GroupValidationAttribute.cs" />
     <Compile Include="Attributes\IGroupValidationAttribute.cs" />
     <Compile Include="Attributes\IValidationAttribute.cs" />
+    <Compile Include="Attributes\ValidateAttribute.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Core\AsyncValidationException.cs" />
     <Compile Include="Core\BindableBase.cs" />
     <Compile Include="Core\BindableValidator.cs" />

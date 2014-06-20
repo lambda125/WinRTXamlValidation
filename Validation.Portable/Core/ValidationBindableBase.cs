@@ -97,13 +97,19 @@ namespace WinRTXAMLValidation.Library.Core
             this.IsValidating = true;
             try
             {
-                return await bindableValidator.ValidateAsync();
+                OnValidationStarting();
+                var result = await bindableValidator.ValidateAsync();
+                return result;
             }
             finally
             {
                 this.IsValidating = false;
+                OnValidationCompleted();
             }
         }
+
+        protected virtual void OnValidationStarting() { }
+        protected virtual void OnValidationCompleted() { }
 
         /// <summary>
         /// Checks if a property already matches a desired value. Sets the property and
