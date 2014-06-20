@@ -17,8 +17,6 @@ namespace WinRTXAMLValidation.Library.Core
     using System.Reflection;
     using System.Threading.Tasks;
 
-    using Windows.Foundation;
-
     using WinRTXAMLValidation.Library.Attributes;
     using WinRTXAMLValidation.Library.Core.Extensions;
     using WinRTXAMLValidation.Library.Core.Helpers;
@@ -113,7 +111,7 @@ namespace WinRTXAMLValidation.Library.Core
         /// <summary>
         /// Multicast event for property messages change notifications.
         /// </summary>
-        public event TypedEventHandler<BindableValidator, DataErrorsChangedEventArgs> PropertyMessagesChanged;
+        public event EventHandler<DataErrorsChangedEventArgs> PropertyMessagesChanged;
 
         #endregion
 

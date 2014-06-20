@@ -103,38 +103,25 @@
     <Prefer32Bit>true</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Attributes\AsyncGroupValidationAttribute.cs" />
-    <Compile Include="Attributes\AsyncValidationAttribute.cs" />
-    <Compile Include="Attributes\ExtendedValidationAttribute.cs" />
-    <Compile Include="Attributes\GroupValidationAttribute.cs" />
-    <Compile Include="Attributes\IGroupValidationAttribute.cs" />
-    <Compile Include="Attributes\IValidationAttribute.cs" />
     <Compile Include="Controls\PropertyValidationTextBlock.cs" />
     <Compile Include="Controls\ValidationPanel.cs" />
     <Compile Include="Controls\ValidationSummary.cs" />
-    <Compile Include="Core\AsyncValidationException.cs" />
-    <Compile Include="Core\BindableBase.cs" />
-    <Compile Include="Core\BindableValidator.cs" />
-    <Compile Include="Core\Extensions\CollectionExtensions.cs" />
-    <Compile Include="Core\Extensions\ExpressionExtensions.cs" />
-    <Compile Include="Core\Extensions\LinqExtensions.cs" />
-    <Compile Include="Core\Helpers\MemberComparer.cs" />
-    <Compile Include="Core\Extensions\TaskExtensions.cs" />
-    <Compile Include="Core\Helpers\Guard.cs" />
-    <Compile Include="Core\ValidationBindableBase.cs" />
-    <Compile Include="Core\ValidationLevel.cs" />
-    <Compile Include="Core\ValidationMessage.cs" />
-    <Compile Include="Core\ValidationMessageKind.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="READ_ME_FIRST.txt" />
+    <ProjectReference Include="..\Validation.Portable\Validation.Portable.csproj">
+      <Project>{af5dc848-4ba7-47a4-9ed6-752143e50f48}</Project>
+      <Name>Validation.Portable</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Styles\ValidationStyles.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <None Include="Styles\ValidationStyles.xaml">
       <SubType>Designer</SubType>
-    </Page>
+      <Generator>MSBuild:Compile</Generator>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="READ_ME_FIRST.txt" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '11.0' ">
     <VisualStudioVersion>11.0</VisualStudioVersion>

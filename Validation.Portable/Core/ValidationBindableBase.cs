@@ -97,7 +97,7 @@ namespace WinRTXAMLValidation.Library.Core
             this.IsValidating = true;
             try
             {
-                return await this.bindableValidator.ValidateAsync();
+                return await bindableValidator.ValidateAsync();
             }
             finally
             {

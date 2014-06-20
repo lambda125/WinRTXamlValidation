@@ -1,23 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30324.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinRTXAMLValidation.Demo", "WinRTXAMLValidation.Demo\WinRTXAMLValidation.Demo.csproj", "{75CCCE90-11AA-405D-A128-FEA952708D15}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinRTXAMLValidation.Library", "WinRTXAMLValidation.Library\WinRTXAMLValidation.Library.csproj", "{9ED2A508-0007-4D9B-BD13-364D5A5313FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validation.Portable", "Validation.Portable\Validation.Portable.csproj", "{AF5DC848-4BA7-47A4-9ED6-752143E50F48}"
+EndProject
 Global
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 3
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://tfs.codeplex.com/tfs/tfs34
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = WinRTXAMLValidation.Demo\\WinRTXAMLValidation.Demo.csproj
-		SccProjectName1 = WinRTXAMLValidation.Demo
-		SccLocalPath1 = WinRTXAMLValidation.Demo
-		SccProjectUniqueName2 = WinRTXAMLValidation.Library\\WinRTXAMLValidation.Library.csproj
-		SccProjectName2 = WinRTXAMLValidation.Library
-		SccLocalPath2 = WinRTXAMLValidation.Library
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Debug|ARM = Debug|ARM
@@ -69,6 +61,16 @@ Global
 		{9ED2A508-0007-4D9B-BD13-364D5A5313FF}.Release|x64.Build.0 = Release|x64
 		{9ED2A508-0007-4D9B-BD13-364D5A5313FF}.Release|x86.ActiveCfg = Release|x86
 		{9ED2A508-0007-4D9B-BD13-364D5A5313FF}.Release|x86.Build.0 = Release|x86
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Release|ARM.ActiveCfg = Release|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Release|x64.ActiveCfg = Release|Any CPU
+		{AF5DC848-4BA7-47A4-9ED6-752143E50F48}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -166,6 +166,10 @@
     <None Include="WinRTXAMLValidation.Demo_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Validation.Portable\Validation.Portable.csproj">
+      <Project>{af5dc848-4ba7-47a4-9ed6-752143e50f48}</Project>
+      <Name>Validation.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WinRTXAMLValidation.Library\WinRTXAMLValidation.Library.csproj">
       <Project>{9ED2A508-0007-4D9B-BD13-364D5A5313FF}</Project>
       <Name>WinRTXAMLValidation.Library</Name>
